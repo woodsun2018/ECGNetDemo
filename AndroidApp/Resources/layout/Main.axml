@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearWebServerUrl"
+        android:layout_margin="5dp">
+        <TextView
+            android:text="服务器"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/txvWebServerUrl"
+            android:textSize="20sp"
+            android:layout_weight="1" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/edtWebServerUrl"
+            android:textSize="20sp"
+            android:hint="请输入服务器地址"
+            android:layout_weight="4" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearRole"
+        android:layout_margin="5dp">
+        <TextView
+            android:text="身份"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/txtRole"
+            android:textSize="20sp"
+            android:layout_weight="1" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/spinnerRole"
+            android:layout_weight="4" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearAccout"
+        android:layout_margin="5dp">
+        <TextView
+            android:text="帐号"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/txvAccount"
+            android:textSize="20sp"
+            android:layout_weight="1" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/edtAccount"
+            android:textSize="20sp"
+            android:hint="请输入帐号"
+            android:layout_weight="4" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearPassword"
+        android:layout_margin="5dp">
+        <TextView
+            android:text="密码"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/txvPassword"
+            android:textSize="20sp"
+            android:layout_weight="1" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:id="@+id/edtPassword"
+            android:textSize="20sp"
+            android:hint="请输入密码"
+            android:layout_weight="4" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录" />
+</LinearLayout>
