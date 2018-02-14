@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "a9dbb3e49519cb40be9ffc6627730ae52b2424da"
+    "signature": "8040ad3a0e62ede1939faed7fe4c76c8328dfa28"
   },
   "compilationOptions": {
     "defines": [
@@ -121,6 +121,18 @@
         },
         "compile": {
           "lib/netstandard1.6/Microsoft.AI.DependencyCollector.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Client/5.2.4-preview1": {
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "Newtonsoft.Json.Bson": "1.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
         }
       },
       "Microsoft.AspNetCore/2.0.1": {
@@ -4089,6 +4101,7 @@
       },
       "ShareCode/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.4-preview1",
           "Newtonsoft.Json": "10.0.3",
           "RestSharp": "106.2.1"
         },
@@ -4314,6 +4327,13 @@
       "path": "microsoft.applicationinsights.dependencycollector/2.4.1",
       "hashPath": "microsoft.applicationinsights.dependencycollector.2.4.1.nupkg.sha512",
       "runtimeStoreManifestName": "aspnetcore-store-2.0.0-linux-x64.xml;aspnetcore-store-2.0.0-osx-x64.xml;aspnetcore-store-2.0.0-win7-x64.xml;aspnetcore-store-2.0.0-win7-x86.xml"
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.4-preview1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LytCfaYQaB9MzYJDdn8XFqqSGvNvwx1SjUWlFay0OdxV8VZkL0Dt+L32fehjYRxctvIGVWNWtBbfnfMFPT6/9w==",
+      "path": "microsoft.aspnet.webapi.client/5.2.4-preview1",
+      "hashPath": "microsoft.aspnet.webapi.client.5.2.4-preview1.nupkg.sha512"
     },
     "Microsoft.AspNetCore/2.0.1": {
       "type": "package",

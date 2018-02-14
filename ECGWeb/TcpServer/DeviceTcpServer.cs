@@ -1,6 +1,7 @@
 ﻿using ECGWeb.DB;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using ShareCode;
 using System;
 using System.Linq;
@@ -98,42 +99,46 @@ namespace ECGWeb
         //解包
         private void Array2Study(byte[] buf)
         {
-            Study study = new Study();
+            //Study study = new Study();
 
-            int readIndex = 0;
+            //int readIndex = 0;
 
-            study.DeviceID = BitConverter.ToInt32(buf, readIndex);
-            readIndex += 4;
+            //study.DeviceID = BitConverter.ToInt32(buf, readIndex);
+            //readIndex += 4;
 
-            study.SampleID = new Guid(buf.Skip(readIndex).Take(16).ToArray());
-            readIndex += 16;
+            //study.SampleID = new Guid(buf.Skip(readIndex).Take(16).ToArray());
+            //readIndex += 16;
 
-            study.SampleTime = DateTime.FromBinary(BitConverter.ToInt64(buf, readIndex));
-            readIndex += 8;
+            //study.SampleTime = DateTime.FromBinary(BitConverter.ToInt64(buf, readIndex));
+            //readIndex += 8;
 
-            study.DeviceID = BitConverter.ToInt32(buf, readIndex);
-            readIndex += 4;
+            //study.DeviceID = BitConverter.ToInt32(buf, readIndex);
+            //readIndex += 4;
 
-            study.FrameNo = BitConverter.ToInt32(buf, readIndex);
-            readIndex += 4;
+            //study.FrameNo = BitConverter.ToInt32(buf, readIndex);
+            //readIndex += 4;
 
-            study.BioBuf = buf.Skip(readIndex).Take(Study.BioBufLen).ToArray();
-            readIndex += Study.BioBufLen;
+            //study.BioBuf = buf.Skip(readIndex).Take(Study.BioBufLen).ToArray();
+            //readIndex += Study.BioBufLen;
 
-            study.PatientName = Encoding.Unicode.GetString(buf, readIndex, Study.PersonNameMaxLen * 2);
-            study.PatientName = study.PatientName.Trim();
-            readIndex += Study.PersonNameMaxLen * 2;
+            //study.PatientName = Encoding.Unicode.GetString(buf, readIndex, Study.PersonNameMaxLen * 2);
+            //study.PatientName = study.PatientName.Trim();
+            //readIndex += Study.PersonNameMaxLen * 2;
 
-            study.Diagnose = Encoding.Unicode.GetString(buf, readIndex, Study.DiagnoseMaxLen * 2);
-            study.Diagnose = study.Diagnose.Trim();
-            readIndex += Study.DiagnoseMaxLen * 2;
+            //study.Diagnose = Encoding.Unicode.GetString(buf, readIndex, Study.DiagnoseMaxLen * 2);
+            //study.Diagnose = study.Diagnose.Trim();
+            //readIndex += Study.DiagnoseMaxLen * 2;
 
-            study.DoctorName = Encoding.Unicode.GetString(buf, readIndex, Study.PersonNameMaxLen * 2);
-            study.DoctorName = study.DoctorName.Trim();
-            readIndex += Study.PersonNameMaxLen * 2;
+            //study.DoctorName = Encoding.Unicode.GetString(buf, readIndex, Study.PersonNameMaxLen * 2);
+            //study.DoctorName = study.DoctorName.Trim();
+            //readIndex += Study.PersonNameMaxLen * 2;
 
-            study.ModifyTime = DateTime.FromBinary(BitConverter.ToInt64(buf, readIndex));
-            readIndex += 8;
+            //study.ModifyTime = DateTime.FromBinary(BitConverter.ToInt64(buf, readIndex));
+            //readIndex += 8;
+
+            string jsonStr = Encoding.UTF8.GetString(buf);
+
+            Study study = JsonConvert.DeserializeObject<Study>(jsonStr);
 
             //增加检查记录到数据库
             AddStudyAsync(study);

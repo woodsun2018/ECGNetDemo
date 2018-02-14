@@ -1,4 +1,5 @@
-﻿using ShareCode;
+﻿using Newtonsoft.Json;
+using ShareCode;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -62,20 +63,23 @@ namespace ECGDevice
         //打包
         private byte[] Study2Array(Study study)
         {
-            List<byte> buf = new List<byte>();
+            //List<byte> buf = new List<byte>();
 
-            buf.AddRange(BitConverter.GetBytes(study.ID));
-            buf.AddRange(study.SampleID.ToByteArray());
-            buf.AddRange(BitConverter.GetBytes(study.SampleTime.ToBinary()));
-            buf.AddRange(BitConverter.GetBytes(study.DeviceID));
-            buf.AddRange(BitConverter.GetBytes(study.FrameNo));
-            buf.AddRange(study.BioBuf);
-            buf.AddRange(Encoding.Unicode.GetBytes(study.PatientName.PadRight(Study.PersonNameMaxLen)));
-            buf.AddRange(Encoding.Unicode.GetBytes(study.Diagnose.PadRight(Study.DiagnoseMaxLen)));
-            buf.AddRange(Encoding.Unicode.GetBytes(study.DoctorName.PadRight(Study.PersonNameMaxLen)));
-            buf.AddRange(BitConverter.GetBytes(study.ModifyTime.ToBinary()));
+            //buf.AddRange(BitConverter.GetBytes(study.ID));
+            //buf.AddRange(study.SampleID.ToByteArray());
+            //buf.AddRange(BitConverter.GetBytes(study.SampleTime.ToBinary()));
+            //buf.AddRange(BitConverter.GetBytes(study.DeviceID));
+            //buf.AddRange(BitConverter.GetBytes(study.FrameNo));
+            //buf.AddRange(study.BioBuf);
+            //buf.AddRange(Encoding.Unicode.GetBytes(study.PatientName.PadRight(Study.PersonNameMaxLen)));
+            //buf.AddRange(Encoding.Unicode.GetBytes(study.Diagnose.PadRight(Study.DiagnoseMaxLen)));
+            //buf.AddRange(Encoding.Unicode.GetBytes(study.DoctorName.PadRight(Study.PersonNameMaxLen)));
+            //buf.AddRange(BitConverter.GetBytes(study.ModifyTime.ToBinary()));
 
-            return buf.ToArray();
+            //return buf.ToArray();
+
+            string jsonStr = JsonConvert.SerializeObject(study);
+            return Encoding.UTF8.GetBytes(jsonStr);
         }
 
         #endregion
