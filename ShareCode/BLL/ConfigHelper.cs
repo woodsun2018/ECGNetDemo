@@ -9,6 +9,13 @@ namespace ShareCode
     {
         //网站地址
         public string WebServerUrl { get; set; } = "http://193.112.19.82:9000";//腾讯云
+        
+        //Tcp服务器IP
+        public string TcpServerIP { get; set; } = "193.112.19.82";//腾讯云
+        //public string TcpServerIP { get; set; } = "127.0.0.1";
+
+        //Tcp服务器端口
+        public int TcpServerPort { get; set; } = 6000;
 
         //当前用户信息
         public UserInfo CurrentUserInfo { get; set; } = new UserInfo();

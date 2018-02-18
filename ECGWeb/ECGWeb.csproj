@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="web\ecgweb\**" />
+    <Content Remove="web\ecgweb\**" />
+    <EmbeddedResource Remove="web\ecgweb\**" />
+    <None Remove="web\ecgweb\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Dockerfile" />
   </ItemGroup>
 

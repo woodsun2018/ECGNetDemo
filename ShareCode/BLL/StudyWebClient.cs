@@ -21,6 +21,7 @@ namespace ShareCode
         {
         }
 
+        //初始化检查记录档案客户端
         public void Init(string serverUrl)
         {
             ServerUri = serverUrl;

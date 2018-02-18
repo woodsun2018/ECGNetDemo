@@ -12,8 +12,8 @@ namespace ECGDevice
     //Tcp网络客户端
     public class TcpNetClient
     {
-        //public string TcpServerIP { get; set; } = "127.0.0.1";
-        public string TcpServerIP { get; set; } = "193.112.19.82";//腾讯云
+        public string TcpServerIP { get; set; } = "127.0.0.1";
+
         public int TcpServerPort { get; set; } = 6000;
 
         private static TcpNetClient _instance = new TcpNetClient();
@@ -21,6 +21,13 @@ namespace ECGDevice
 
         private TcpNetClient()
         {
+        }
+
+        //初始化Tcp网络客户端
+        public void Init(string tcpServerIP, int tcpServerPort)
+        {
+            TcpServerIP = tcpServerIP;
+            TcpServerPort = tcpServerPort;
         }
 
         #region TCP方式发送检查记录到服务器

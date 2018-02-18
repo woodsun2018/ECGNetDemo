@@ -44,9 +44,8 @@ namespace ECGDevice
             cboLinkType.SelectedIndex = 0;
 
             this.txbWebServerUrl.Text = MyConfig.Config.WebServerUrl;
-
-            this.txbTcpServerIP.Text = MyTcpNetClient.TcpServerIP;
-            this.txbTcpServerPort.Text = MyTcpNetClient.TcpServerPort.ToString();
+            this.txbTcpServerIP.Text = MyConfig.Config.TcpServerIP;
+            this.txbTcpServerPort.Text = MyConfig.Config.TcpServerPort.ToString();
 
             //开始检测
             btnStart.Click += (s1, e1) => StartStudy();
@@ -68,10 +67,9 @@ namespace ECGDevice
             LinkType = (LinkTypes)(cboLinkType.SelectedIndex);
 
             MyConfig.Config.WebServerUrl = this.txbWebServerUrl.Text.Trim();
+            MyConfig.Config.TcpServerIP = this.txbTcpServerIP.Text.Trim();
+            MyConfig.Config.TcpServerPort = int.Parse(this.txbTcpServerPort.Text);
             MyConfig.SaveConfig();
-
-            MyTcpNetClient.TcpServerIP = this.txbTcpServerIP.Text.Trim();
-            MyTcpNetClient.TcpServerPort = int.Parse(this.txbTcpServerPort.Text);
 
             //采集心电图
             byte[] sampleBuf = MySampleECG.SampleECGData();
@@ -116,6 +114,9 @@ namespace ECGDevice
                 }
                 else
                 {
+                    //初始化Tcp网络客户端
+                    MyTcpNetClient.Init(MyConfig.Config.TcpServerIP, MyConfig.Config.TcpServerPort);
+
                     //通过Tcp方式发送检测记录到服务器
                     await MyTcpNetClient.SendStudyAsync(study);
                 }
